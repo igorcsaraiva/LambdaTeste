@@ -11,11 +11,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-         
+
     - name: build
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'
-    - run: cd /home/runner/work/TemplateLambda-net6/TemplateLambda-net6/app/src/LambdaFunction & dotnet build --configuration Release
+    - run: cd /home/runner/work/TemplateLambda-net6/TemplateLambda-net6/app/src/LambdaFunction & ls & dotnet build --configuration Release
 
 
