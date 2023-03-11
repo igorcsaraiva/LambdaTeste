@@ -27,32 +27,27 @@ jobs:
     - name: build
       working-directory: ./app/src/LambdaFunction
       run: dotnet build --configuration Release
-
-  infra:
-    needs: [build]
-    runs-on: ubuntu-latest
+  
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+       terraform_version: ${{ env.TERRAFORM_VERSION }}
     
-    steps:
-     - name: Install Terraform
-       uses: hashicorp/setup-terraform@v1
-       with:
-        terraform_version: ${{ env.TERRAFORM_VERSION }}
-     
-     - name: Configure AWS credentials for Terraform
-       uses: hashicorp/setup-aws-cli@v1
-       with:
-        aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-            
-     - name: Initialize Terraform
-       run: |
-        cd ${{ env.TERRAFORM_WORKING_DIR }}
-        terraform init
-     - name: Deploy Lambda with Terraform
-       run: |
-        cd ${{ env.TERRAFORM_WORKING_DIR }}
-        terraform apply -auto-approve
+    - name: Configure AWS credentials for Terraform
+      uses: hashicorp/setup-aws-cli@v1
+      with:
+       aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+       aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+       aws-region: ${{ env.AWS_REGION }}
+          
+    - name: Initialize Terraform
+      run: |
+       cd ${{ env.TERRAFORM_WORKING_DIR }}
+       terraform init
+    - name: Deploy Lambda with Terraform
+      run: |
+       cd ${{ env.TERRAFORM_WORKING_DIR }}
+       terraform apply -auto-approve
     
       
       
