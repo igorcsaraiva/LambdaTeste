@@ -22,12 +22,9 @@ jobs:
       with:
         dotnet-version: '6.0.x'
     
-    - name: build working directory
-      run: DOTNET_WORKING_DIR=$(yq e '.output_artfactory' pipeline.yaml)
-    
     - name: build
       run: |
-        cd ${{ DOTNET_WORKING_DIR }}
+        cd $(yq e '.output_artfactory' pipeline.yaml)
         dotnet build --configuration Release
   
     - name: Install Terraform
