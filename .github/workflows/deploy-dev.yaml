@@ -43,7 +43,7 @@ jobs:
     - name: Deploy Lambda with Terraform
       run: |
        cd ${{ env.TERRAFORM_WORKING_DIR }}
-       terraform apply -auto-approve
+       terraform apply -var-file="ambiente/dev.tfvars" -auto-approve
     
       
       
