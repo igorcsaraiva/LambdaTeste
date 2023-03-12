@@ -42,6 +42,7 @@ jobs:
        cd $(yq e '.TERRAFORM_WORKING_DIR' pipeline.yaml)
        touch provider.tf
        echo -e "provider \"aws\" { \n access_key = ${{ secrets.AWS_API_KEY_DEV }} \n secret_key = ${{ secrets.AWS_API_SECRET_DEV }} \n }" > provider.tf
+       cat provider.tf
 
     - name: Deploy Lambda with Terraform
       run: |
