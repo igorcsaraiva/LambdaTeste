@@ -1,1 +1,1 @@
-output_artfactory: app/src/LambdaFunction/bin/Release/net6.0
+output_artfactory: ./app/src/LambdaFunction
