@@ -8,7 +8,7 @@ on:
 env:
     AWS_REGION: 'sa-east-1'
     TERRAFORM_VERSION: '1.0.9'
-    TERRAFORM_WORKING_DIR: './infra'
+    TERRAFORM_WORKING_DIR: yq e '.output_artfactory' pipeline.yaml
 
 jobs:
   build: 
