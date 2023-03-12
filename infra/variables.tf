@@ -1,13 +1,13 @@
 variable "function_name" {
     type = string
     description = "Nome lambda"
-    default = "LambdaFunction"
+    default = "LambdaTeste"
 }
 
 variable "handler" {
     type = string
     description = "Nome do handler da lambda"
-    default = "LambdaFunction::LambdaFunction.Function::FunctionHandler"
+    default = "LambdaTeste::LambdaTeste.Function::FunctionHandler"
 }
 
 variable "runtime" {
