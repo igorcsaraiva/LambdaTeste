@@ -23,7 +23,7 @@ jobs:
         dotnet-version: '6.0.x'
     
     - name: build working directory
-      run: export DOTNET_WORKING_DIR=yq e '.output_artfactory' pipeline.yaml
+      run: yq e '.output_artfactory' pipeline.yaml
     
     - name: build
       working-directory: ./app/src/LambdaFunction
